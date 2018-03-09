@@ -1,6 +1,7 @@
 package View;
 
 import Controller.CreateMovie;
+import Controller.EditMovie;
 
 import java.util.Scanner;
 
@@ -61,7 +62,7 @@ public class Menu {
                             CreateMovie.createMovies();
                         break;
                     case 2:
-                        //Kald edit movie
+                        EditMovie.editMovie();
                         break;
                     default:
                         System.out.println("Vælg et menupunkt");
