@@ -1,19 +1,15 @@
 package Controller;
 
 import Model.Database;
+import View.Menu;
 
-public class Admin{
+public class Admin {
 
-    Database database = new Database();
+    private Database database = new Database();
 
-    public void changePrice(int filmID, String newPrice){
+    public boolean createBooking(String venue, String phone, String row, String seats) {
 
-            database.execute("UPDATE movie SET price = '" + newPrice + "' Where idMovie = '" + filmID + "';");
+        return database.execute("INSERT INTO booking (title, genre, price, length) VALUES('" + venue + "', '" + phone + "','"
+                + row + "', '" + seats + "');");
     }
-    //til test / slettes
-//    public static void main(String[] args){
-//
-//        Admin admin = new Admin();
-//        admin.changePrice(1 , "30kr");
-//    }
 }
