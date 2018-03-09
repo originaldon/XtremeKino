@@ -1,5 +1,8 @@
 package View;
 
+import Controller.Admin;
+import Model.Database;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -33,10 +36,41 @@ public class Menu {
         System.out.println("0: Tilbage");
     }
 
+    private String convertSeatsRange(int seatFrom, int seatTo){
+
+        String returnString = "";
+
+        for (int i = seatFrom; i <= seatTo; i++){
+
+            returnString += i + " ";
+        }
+
+        return returnString;
+    }
+
     public void reserveSeats() {
 
-        //Sal - tlfnr - sæde - række
+        Scanner scanner = new Scanner(System.in);
+        Admin admin = new Admin();
+        System.out.println();
 
+
+        //Sal - tlfnr - sæde - række
+        System.out.println();
+        System.out.print("Indtast tlfnr: ");
+        String phone = scanner.nextLine();
+        System.out.print("Indtast navn: ");
+        String name = scanner.nextLine();
+        System.out.print("Indtast sal: ");
+        String venue = scanner.nextLine();
+        System.out.print("Indtast række: ");
+        String row = scanner.nextLine();
+        System.out.print("Indtast startsæde: ");
+        String seatFrom = scanner.nextLine();
+        System.out.print("Indtast slutsæde: ");
+        String seatTo = scanner.nextLine();
+
+        admin.createBooking(venue, phone, row, convertSeatsRange(Integer.getInteger(seatFrom), Integer.getInteger(seatTo)));
 
     }
 
@@ -75,7 +109,5 @@ public class Menu {
 
 
         menu();
-
-        }
     }
 }
