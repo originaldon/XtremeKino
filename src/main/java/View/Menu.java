@@ -26,9 +26,20 @@ public class Menu {
 
         System.out.println("Book:");
         System.out.println();
-        System.out.println("1: Book");
+        System.out.println("1: Plads resevering");
+        System.out.println("2: Se bookninger");
+        System.out.println("3: Rediger bookning");
+        System.out.println();
+        System.out.println("0: Tilbage");
+    }
+
+    public void reserveSeats() {
+
+        //Sal - tlfnr - sæde - række
+
 
     }
+
 
     private int chooseOption() {
 

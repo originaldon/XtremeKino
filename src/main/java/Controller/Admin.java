@@ -4,13 +4,11 @@ import Model.Database;
 import View.Menu;
 
 public class Admin{
-
-<<<<<<< HEAD
+    
     private Database database = new Database();
-=======
-    Database database = new Database();
+
     Menu menu = new Menu();
->>>>>>> 45df6cdcd7ea03e2f2fb5e7cc95918ac97cf82c5
+
 
     public boolean changePrice(int filmID, String newPrice){
 
