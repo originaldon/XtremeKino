@@ -2,7 +2,8 @@ package Controller;
 
 import Model.Database;
 import View.Menu;
-
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class CreateMovie {
@@ -20,12 +21,16 @@ public class CreateMovie {
             System.out.println("************************************************\n");
             System.out.println("Felt 1: Tast filmens titel\n");
             movieTitle = scanner.nextLine();
+            //movieTitle = title;
             System.out.println("Felt 2: Skriv genren på filmen\n");
             genre = scanner.nextLine();
+            //genre = g;
             System.out.println("Felt 3: Tast filmens pris\n");
             price = scanner.nextLine();
+            //price = p;
             System.out.println("Felt 4: tast længden på filmen\n");
             movieLength = scanner.nextLine();
+            //movieLength = l;
 
             if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit") &&
                     !price.equalsIgnoreCase("Exit") && !movieLength.equalsIgnoreCase("Exit")) {
@@ -40,8 +45,9 @@ public class CreateMovie {
         }
     }
     private static boolean createMovie(String movieTitle, String genre, String price, String movieLength){
-        Database database = new Database();
-        return database.execute("INSERT INTO movie SET title = " + movieTitle + ", genre = " + genre + ", price = " + price + ", length = " + movieLength);
-    }
 
+        Database database = new Database();
+        return database.execute("INSERT INTO movie (title, genre, price, length) " +
+                "VALUES('"+ movieTitle + "', '" + genre + "', '" + price + "', '" + movieLength + "')");
+    }
 }
