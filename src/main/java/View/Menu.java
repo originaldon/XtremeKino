@@ -49,7 +49,7 @@ public class Menu {
     }
 
     private boolean testExit (String test){
-        return test.equalsIgnoreCase("Exit")
+        return test.equalsIgnoreCase("Exit");
     }
 
     public void createMovies() {

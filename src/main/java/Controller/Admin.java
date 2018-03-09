@@ -4,7 +4,7 @@ import Model.Database;
 import View.Menu;
 
 public class Admin{
-    
+
     private Database database = new Database();
 
     Menu menu = new Menu();
