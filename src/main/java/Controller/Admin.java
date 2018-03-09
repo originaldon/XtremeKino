@@ -4,7 +4,7 @@ import Model.Database;
 
 public class Admin{
 
-    Database database = new Database();
+    private Database database = new Database();
 
     public boolean changePrice(int filmID, String newPrice){
 
