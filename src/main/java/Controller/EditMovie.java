@@ -10,6 +10,7 @@ public class EditMovie {
     private static String genre;
     private static String price;
     private static String movieLength;
+    private static String showDate;
     private static Database database = new Database();
 
     public static void editMovie() {
@@ -30,11 +31,14 @@ public class EditMovie {
             price = scanner.nextLine();
             System.out.println("Tast længden på filmen");
             movieLength = scanner.nextLine();
+            System.out.println("Tast visetiden på filmen (dd-mm-yy hh:mm");
+            showDate = scanner.nextLine();
+
 
             if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit")
                     && !movieLength.equalsIgnoreCase("Exit")) {
 
-                editMovieInput(filmID, movieTitle, genre, price, movieLength);
+                editMovieInput(filmID, movieTitle, genre, price, movieLength, showDate);
             } else {
                 Menu.menu();
             }
@@ -43,8 +47,8 @@ public class EditMovie {
         }
     }
 
-    public static void editMovieInput(int filmID, String newTitle, String newGenre, String newPrice, String newLength){
+    private static void editMovieInput(int filmID, String newTitle, String newGenre, String newPrice, String newLength, String showDate){
         database.execute("UPDATE movie SET title = '" + newTitle + "', genre = '" + newGenre +
-                "', price = '" + newPrice + "', length = '" + newLength + "' WHERE idMovie = '" + filmID + "';");
+                "', price = '" + newPrice + "', length = '" + newLength + "', showdate = '" + showDate + "' WHERE idMovie = '" + filmID + "'");
     }
 }

@@ -1,6 +1,6 @@
 package View;
 
-import Controller.Admin;
+import Controller.Booking;
 import Controller.CreateMovie;
 import Controller.EditMovie;
 
@@ -8,8 +8,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void menu() {
+    public static void main(String[] args){
+        Menu.menu();
+    }
 
+    public static void menu() {
         boolean quit = false;
         System.out.println("Menu:");
         System.out.println();
@@ -20,12 +23,12 @@ public class Menu {
 
         switch (chooseOption()) {
             case 1: {
-                System.out.println("Plads bookning");
-                System.out.println("Se bookning/kalender");
-                System.out.println("Rediger bookning");
+                System.out.println("1: Plads bookning");
+                System.out.println("2: Se bookning/kalender");
+                System.out.println("3: Rediger bookning");
                 switch (chooseOption()) {
                     case 1:
-                        //Her kaldes noget med bookning
+                        Booking.reserveSeats();
                         break;
                     case 2:
                         //Print bookninger eller kalender
@@ -84,57 +87,20 @@ public class Menu {
     }
 
 
-    public void bookingMenu() {
-
-        System.out.println("Book:");
-        System.out.println();
-        System.out.println("1: Plads resevering");
-        System.out.println("2: Se bookninger");
-        System.out.println("3: Rediger bookning");
-        System.out.println();
-        System.out.println("0: Tilbage");
-    }
-
-    private String convertSeatsRange(int seatFrom, int seatTo) {
-
-        String returnString = "";
-
-        for (int i = seatFrom; i <= seatTo; i++) {
-
-            returnString += i + " ";
-        }
-
-        return returnString;
-    }
-
-    public void reserveSeats() {
-
-        Scanner scanner = new Scanner(System.in);
-        Admin admin = new Admin();
-        System.out.println();
-
-
-        //Sal - tlfnr - sæde - række
-        System.out.println();
-        System.out.print("Indtast tlfnr: ");
-        String phone = scanner.nextLine();
-        System.out.print("Indtast navn: ");
-        String name = scanner.nextLine();
-        System.out.print("Indtast sal: ");
-        String venue = scanner.nextLine();
-        System.out.print("Indtast række: ");
-        String row = scanner.nextLine();
-        System.out.print("Indtast startsæde: ");
-        String seatFrom = scanner.nextLine();
-        System.out.print("Indtast slutsæde: ");
-        String seatTo = scanner.nextLine();
-
-        admin.createBooking(venue, phone, row, convertSeatsRange(Integer.getInteger(seatFrom), Integer.getInteger(seatTo)));
-
-    }
+//    public void bookingMenu() {
+//
+//        System.out.println("Book:");
+//        System.out.println();
+//        System.out.println("1: Plads resevering");
+//        System.out.println("2: Se bookninger");
+//        System.out.println("3: Rediger bookning");
+//        System.out.println();
+//        System.out.println("0: Tilbage");
+//}
 
     private static int chooseOption() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 }
+
