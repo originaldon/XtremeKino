@@ -11,7 +11,6 @@ public class CreateMovie {
     private static String genre;
     private static String price;
     private static String movieLength;
-    private static String showDate;
 
     public static void createMovies() {
 
@@ -28,14 +27,12 @@ public class CreateMovie {
             price = scanner.nextLine();
             System.out.println("Felt 4: tast længden på filmen\n");
             movieLength = scanner.nextLine();
-            System.out.println("Tast visetiden på filmen (dd-mm-yy hh:mm");
-            showDate = scanner.nextLine();
 
 
             if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit") &&
                     !price.equalsIgnoreCase("Exit") && !movieLength.equalsIgnoreCase("Exit")) {
 
-                createMovie(movieTitle, genre, price, movieLength, showDate);
+                createMovie(movieTitle, genre, price, movieLength);
 
             } else {
                 Menu.menu();
@@ -44,10 +41,10 @@ public class CreateMovie {
             E.printStackTrace();
         }
     }
-    private static boolean createMovie(String movieTitle, String genre, String price, String movieLength, String showDate){
+    private static boolean createMovie(String movieTitle, String genre, String price, String movieLength){
 
         Database database = new Database();
-        return database.execute("INSERT INTO movie (title, genre, price, length, showdate) " +
-                "VALUES('"+ movieTitle + "', '" + genre + "', '" + price + "', '" + movieLength + "', '" + showDate + "')");
+        return database.execute("INSERT INTO movie (title, genre, price, length) " +
+                "VALUES('"+ movieTitle + "', '" + genre + "', '" + price + "', '" + movieLength + "' )");
     }
 }
