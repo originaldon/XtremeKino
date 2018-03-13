@@ -11,6 +11,7 @@ public class CreateMovie {
     private static String genre;
     private static String price;
     private static String movieLength;
+    private static String showDate;
 
     public static void createMovies() {
 
@@ -21,21 +22,20 @@ public class CreateMovie {
             System.out.println("************************************************\n");
             System.out.println("Felt 1: Tast filmens titel\n");
             movieTitle = scanner.nextLine();
-            //movieTitle = title;
             System.out.println("Felt 2: Skriv genren på filmen\n");
             genre = scanner.nextLine();
-            //genre = g;
             System.out.println("Felt 3: Tast filmens pris\n");
             price = scanner.nextLine();
-            //price = p;
             System.out.println("Felt 4: tast længden på filmen\n");
             movieLength = scanner.nextLine();
-            //movieLength = l;
+            System.out.println("Tast visetiden på filmen (dd-mm-yy hh:mm");
+            showDate = scanner.nextLine();
+
 
             if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit") &&
                     !price.equalsIgnoreCase("Exit") && !movieLength.equalsIgnoreCase("Exit")) {
 
-                createMovie(movieTitle, genre, price, movieLength);
+                createMovie(movieTitle, genre, price, movieLength, showDate);
 
             } else {
                 Menu.menu();
@@ -44,10 +44,10 @@ public class CreateMovie {
             E.printStackTrace();
         }
     }
-    private static boolean createMovie(String movieTitle, String genre, String price, String movieLength){
+    private static boolean createMovie(String movieTitle, String genre, String price, String movieLength, String showDate){
 
         Database database = new Database();
-        return database.execute("INSERT INTO movie (title, genre, price, length) " +
-                "VALUES('"+ movieTitle + "', '" + genre + "', '" + price + "', '" + movieLength + "')");
+        return database.execute("INSERT INTO movie (title, genre, price, length, showdate) " +
+                "VALUES('"+ movieTitle + "', '" + genre + "', '" + price + "', '" + movieLength + "', '" + showDate + "')");
     }
 }
