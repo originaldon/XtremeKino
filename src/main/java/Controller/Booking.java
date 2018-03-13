@@ -1,5 +1,7 @@
 package Controller;
 
+import View.Menu;
+
 import java.util.Scanner;
 
 public class Booking {
@@ -26,6 +28,38 @@ public class Booking {
         int seatTo = scanner.nextInt();
 
         admin.createBooking(phone, name, movie, hall, row, convertSeatsRange(seatFrom, seatTo));
+    }
+
+    public static void deleteBooking(){
+
+        Admin admin = new Admin();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Indtast tlf. på kunde:");
+        String phone = scanner.nextLine();
+
+        if (admin.deleteBooking(phone)){
+            System.out.println("Booking slettet");
+            Menu.menu();
+        }else{
+            System.out.println("Telefonnummer ikke fundet");
+            Menu.menu();
+        }
+
+
+    }
+
+    public static void findBooking(){
+
+        Admin admin = new Admin();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Indtast tlf. på kunde:");
+        String phone = scanner.nextLine();
+
+        if (admin.findBooking())
     }
 
     private static String convertSeatsRange(int seatFrom, int seatTo) {
