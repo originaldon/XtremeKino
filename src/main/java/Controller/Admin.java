@@ -21,7 +21,7 @@ public class Admin {
                 + price + "', '" + movieLength + "');");
 
     }
-
+        //Booking er forkert.
     public boolean createBooking(String venue, String phone, String row, String seats) {
 
         return database.execute("INSERT INTO booking (title, genre, price, length) VALUES('" + movieTitle + "', '" + genre + "','"
