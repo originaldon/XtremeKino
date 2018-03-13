@@ -59,7 +59,7 @@ public class Booking {
         System.out.println("Indtast tlf. på kunde:");
         String phone = scanner.nextLine();
 
-        if (admin.findBooking())
+        //if (admin.findBooking())
     }
 
     private static String convertSeatsRange(int seatFrom, int seatTo) {

@@ -15,13 +15,13 @@ public class Admin {
 
     public boolean deleteBooking(String phone){
 
-        return database.execute("DELETE FROM booking WHERE phone='" + phone + "');");
+        return database.execute("DELETE FROM booking WHERE phone='" + phone + "';");
 
     }
 
     public List<String[]> findBooking(String phone){
 
-        return database.listBookings("SELECT * FROM booking WHERE phone='" + phone + "');");
+        return database.listBookings("SELECT * FROM booking WHERE phone='" + phone + "';");
 
     }
 
