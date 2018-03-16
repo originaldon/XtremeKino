@@ -25,7 +25,8 @@ public class Menu {
             case 1: {
                 System.out.println("1: Plads bookning");
                 System.out.println("2: Se bookning/kalender");
-                System.out.println("3: Slet bookning");
+                System.out.println("3: Rediger booking");
+                System.out.println("4: Slet bookning");
                 switch (chooseOption()) {
                     case 1:
                         Booking.reserveSeats();
@@ -34,6 +35,9 @@ public class Menu {
                         Booking.findBooking();
                         break;
                     case 3:
+                        Booking.editBookings();
+                        break;
+                    case 4:
                         Booking.deleteBooking();
                         break;
                     default:

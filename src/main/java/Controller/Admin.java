@@ -13,16 +13,22 @@ public class Admin {
                 + "', '" + movie + "', '" + hall + "', '" + row + "', '" + seats + "');");
     }
 
-    public boolean deleteBooking(String phone){
+    public boolean deleteBooking(String idbooking){
 
-        return database.execute("DELETE FROM booking WHERE phone='" + phone + "';");
+        return database.execute("DELETE FROM booking WHERE idbooking='" + idbooking + "';");
 
     }
 
     public List<String[]> findBooking(String phone){
 
-        return database.listBookings("SELECT * FROM booking WHERE phone='" + phone + "';");
+        return database.listBookings("SELECT * FROM booking WHERE phone='" + phone + "'");
 
+    }
+
+    public void editBooking(String idbooking, String phone, String name, String movie, String hall, String row, String seats){
+
+        database.execute("UPDATE booking SET phone = '" + phone + "', name = '" + name + "', movie = '" + movie + "', hall = '" + hall + "', row = '" + row + "', seats = '" + seats + "' " +
+                "WHERE idbooking = '" +idbooking + "';");
     }
 
 }

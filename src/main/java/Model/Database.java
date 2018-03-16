@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Database {
@@ -29,13 +30,13 @@ public class Database {
         return updated;
     }
 
-    public List<String[]> listBookings(String phone) {
+    public List<String[]> listBookings(String sql) {
 
         ArrayList<String[]> foundBookings = null;
 
         try {
             Statement stmt = connection.createStatement();
-            ResultSet resultSet = stmt.executeQuery("SELECT * FROM booking WHERE WHERE phone='" + phone + "');");
+            ResultSet resultSet = stmt.executeQuery(sql);
 
             if (resultSet.next()) {
                 foundBookings = new ArrayList<String[]>();
@@ -50,7 +51,8 @@ public class Database {
                 current[4] = resultSet.getString("hall");
                 current[5] = resultSet.getString("row");
                 current[6] = resultSet.getString("seats");
-
+                foundBookings.add(current);
+                System.out.println();
             }
 
             resultSet.close();
