@@ -28,12 +28,8 @@ public class CreateMovie {
             System.out.println("Felt 4: tast længden på filmen\n");
             movieLength = scanner.nextLine();
 
-
-            if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit") &&
-                    !price.equalsIgnoreCase("Exit") && !movieLength.equalsIgnoreCase("Exit")) {
-
+            if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit")) {
                 createMovie(movieTitle, genre, price, movieLength);
-
             } else {
                 Menu.menu();
             }

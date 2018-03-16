@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Menu.menu();
     }
 
@@ -19,57 +19,79 @@ public class Menu {
         System.out.println("1: Book");
         System.out.println("2: Salg");
         System.out.println("3: Film");
-        System.out.println("0: Luk");
+        System.out.println("4: Luk");
 
         switch (chooseOption()) {
             case 1: {
                 System.out.println("1: Plads bookning");
                 System.out.println("2: Se bookning/kalender");
                 System.out.println("3: Rediger bookning");
+                System.out.println("4: Vend tilbage til menuen");
                 switch (chooseOption()) {
                     case 1:
                         Booking.reserveSeats();
+                        Menu.menu();
                         break;
                     case 2:
                         //Print bookninger eller kalender
+                        Menu.menu();
                         break;
                     case 3:
                         //Kald rediger bookning
+                        Menu.menu();
+                        break;
+                    case 4:
+                        Menu.menu();
                         break;
                     default:
                         System.out.println("Vælg et menupunkt");
+                        Menu.menu();
                         break;
                 }
                 break;
             }
             case 2: {
-                System.out.println("Betal for bookning");
-                System.out.println("Salgs statistik");
+                System.out.println("1: Betal for bookning");
+                System.out.println("2: Salgs statistik");
+                System.out.println("3: Vend tilbage til menuen");
                 switch (chooseOption()) {
                     case 1:
                         //Kald betalingsmetode
+                        Menu.menu();
                         break;
                     case 2:
                         //Print statistik over salg
+                        Menu.menu();
+                        break;
+                    case 3:
+                        Menu.menu();
                         break;
                     default:
                         System.out.println("Vælg et menupunkt");
+                        Menu.menu();
                         break;
                 }
                 break;
             }
             case 3: {
-                System.out.println("Indsæt ny film");
-                System.out.println("Rediger film");
+                System.out.println("1: Indsæt ny film");
+                System.out.println("2: Rediger film");
+                System.out.println("3: Vend tilbage til menuen");
                 switch (chooseOption()) {
                     case 1:
                         CreateMovie.createMovies();
+                        Menu.menu();
                         break;
                     case 2:
                         EditMovie.editMovie();
+                        Menu.menu();
+                        break;
+                    case 3:
+                        Menu.menu();
                         break;
                     default:
                         System.out.println("Vælg et menupunkt");
+                        Menu.menu();
                         break;
                 }
                 break;
@@ -79,6 +101,7 @@ public class Menu {
                 break;
             default:
                 System.out.println("Vælg et menupunkt");
+                Menu.menu();
                 break;
         }
         while (quit) {
