@@ -64,5 +64,36 @@ public class Database {
         return foundBookings;
 
     }
+
+    public List<String[]> listMovies(String sql) {
+
+        ArrayList<String[]> foundMovies = null;
+
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sql);
+
+            if (resultSet.next()) {
+                foundMovies = new ArrayList<String[]>();
+                resultSet.previous();
+            }
+            while (resultSet.next()) {
+                String[] current = new String[4];
+                current[0] = resultSet.getString("title");
+                current[1] = resultSet.getString("genre");
+                current[2] = resultSet.getString("price");
+                current[3] = resultSet.getString("length");
+                foundMovies.add(current);
+                System.out.println();
+            }
+
+            resultSet.close();
+            stmt.close();
+
+        }catch (SQLException e){
+            System.out.println("error" + e);
+        }
+        return foundMovies;
+    }
 }
 

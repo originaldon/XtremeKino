@@ -33,17 +33,20 @@ public class Menu {
                 switch (chooseOption()) {
                     case 1:
                         Booking.reserveSeats();
-                        //Menu.menu();
+                        Menu.menu();
                         break;
                     case 2:
                         //Print bookninger eller kalender
                         Booking.findBooking();
+                        Menu.menu();
                         break;
                     case 3:
                         Booking.editBookings();
+                        Menu.menu();
                         break;
                     case 4:
                         Booking.deleteBooking();
+                        Menu.menu();
                         break;
                   case 5:
                     Menu.menu();
@@ -110,8 +113,9 @@ public class Menu {
                 Menu.menu();
                 break;
         }
-        while (quit) {
+        if (quit) {
             System.out.println("Farvel og tak for i dag.");
+            System.exit(1);
         }
     }
 

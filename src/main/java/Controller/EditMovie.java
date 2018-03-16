@@ -3,6 +3,8 @@ package Controller;
 import Model.Database;
 import View.Menu;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class EditMovie {
@@ -15,13 +17,14 @@ public class EditMovie {
     public static void editMovie() {
         int movieID;
 
+        System.out.println("Liste over film: ");
+        listAllMovies();
+
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Du kan til enhver til vende tilbage til menuen\n");
             System.out.println("Tast blot exit når der indtastes film titel og genre.\n");
             System.out.println("************************************************");
-            System.out.println("Vælg filmens ID");
-            movieID = scanner.nextInt();
             System.out.println("Tast filmens titel");
             movieTitle = scanner.nextLine();
             System.out.println("Skriv genren på filmen");
@@ -32,7 +35,7 @@ public class EditMovie {
             movieLength = scanner.nextLine();
 
             if (!movieTitle.equalsIgnoreCase("Exit") && !genre.equalsIgnoreCase("Exit")) {
-                editMovieInput(movieID, movieTitle, genre, price, movieLength);
+                editMovieInput(movieTitle, genre, price, movieLength);
             } else {
                 Menu.menu();
             }
@@ -41,8 +44,19 @@ public class EditMovie {
         }
     }
 
-    private static void editMovieInput(int movieID, String newTitle, String newGenre, String newPrice, String newLength){
+    private static void editMovieInput(String newTitle, String newGenre, String newPrice, String newLength){
         database.execute("UPDATE movie SET title = '" + newTitle + "', genre = '" + newGenre +
-                "', price = '" + newPrice + "', length = '" + newLength + "' WHERE idMovie = '" + movieID + "'");
+                "', price = '" + newPrice + "', length = '" + newLength + "' WHERE title = '" +newTitle + "'");
+    }
+
+    private static void listAllMovies(){
+
+        List<String[]> allMovies = database.listMovies("SELECT * FROM movie");
+
+        for (String[] movie: allMovies) {
+
+            System.out.println(Arrays.toString(movie));
+
+        }
     }
 }
