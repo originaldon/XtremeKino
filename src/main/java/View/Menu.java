@@ -25,23 +25,29 @@ public class Menu {
             case 1: {
                 System.out.println("1: Plads bookning");
                 System.out.println("2: Se bookning/kalender");
-                System.out.println("3: Rediger bookning");
-                System.out.println("4: Vend tilbage til menuen");
+
+                System.out.println("3: Rediger booking");
+                System.out.println("4: Slet bookning");
+              System.out.println("5: Vend tilbage til menuen");
+
                 switch (chooseOption()) {
                     case 1:
                         Booking.reserveSeats();
-                        Menu.menu();
+                        //Menu.menu();
                         break;
                     case 2:
                         //Print bookninger eller kalender
-                        Menu.menu();
+                        Booking.findBooking();
                         break;
                     case 3:
-                        //Kald rediger bookning
-                        Menu.menu();
+                        Booking.editBookings();
                         break;
                     case 4:
-                        Menu.menu();
+                        Booking.deleteBooking();
+                        break;
+                  case 5:
+                    Menu.menu();
+
                         break;
                     default:
                         System.out.println("Vælg et menupunkt");
@@ -108,18 +114,6 @@ public class Menu {
             System.out.println("Farvel og tak for i dag.");
         }
     }
-
-
-//    public void bookingMenu() {
-//
-//        System.out.println("Book:");
-//        System.out.println();
-//        System.out.println("1: Plads resevering");
-//        System.out.println("2: Se bookninger");
-//        System.out.println("3: Rediger bookning");
-//        System.out.println();
-//        System.out.println("0: Tilbage");
-//}
 
     private static int chooseOption() {
         Scanner scanner = new Scanner(System.in);
